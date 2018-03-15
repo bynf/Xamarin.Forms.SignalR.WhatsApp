@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="topSOSLog.Pages.main.MainPage"
+             xmlns:markupExtensions="clr-namespace:topSOSLog.MarkupExtensions;assembly=topSOSLog"
+             Title="Topluluk Yönetimi">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Yeni"  Clicked="YeniGrupClickEvent"
+                     Icon="{markupExtensions:ImageSource Source='topSOSLog.Assets.Images.blue-plus.png'}"/>
+        <ToolbarItem Name="Ayarlar" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <ListView x:Name="lstView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                ItemsSource="{Binding .}"
+                CachingStrategy ="RecycleElement"
+                ItemSelected="onSelected"
+                IsPullToRefreshEnabled="True"
+                Refreshing="onListViewRefreshing"> 
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Title}" TextColor="#f46508" 
+                                   Detail ="{Binding TextMessage}" DetailColor="#333"
+                                   ImageSource="{markupExtensions:ImageSource Source='topSOSLog.Assets.Images.GroupIcon.png'}">
+                            <ImageCell.ContextActions>
+                                <MenuItem Text="Sil"  IsDestructive="True" ></MenuItem>
+                            </ImageCell.ContextActions>
+                        </ImageCell> 
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

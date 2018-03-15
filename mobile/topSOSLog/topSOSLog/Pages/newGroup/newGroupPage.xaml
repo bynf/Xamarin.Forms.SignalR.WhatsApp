@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="topSOSLog.Pages.newGroup.newGroupPage"
+             Title="Yeni Topluluk Oluştur"
+             
+             >
+    <ContentPage.Content> 
+    <StackLayout Orientation="Vertical">
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                      iOS="0,30,0,0" Android="0,0,0,0" WinPhone="0,0,0,0"></OnPlatform>
+            </StackLayout.Padding>
+            <ListView x:Name="groupList" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                      ItemsSource="{Binding .}"
+                      CachingStrategy ="RecycleElement"
+                      ItemSelected="onItemSelectedEvent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"> 
+                                <Button Clicked="prListButtonClick" WidthRequest="30" HeightRequest="20"
+                                        CommandParameter="{Binding Userid}" HorizontalOptions="End"
+                                        Margin="5" BackgroundColor="White"
+                                        ></Button>
+                                <StackLayout Padding="0,10,0,0">
+                                <Label Text="{Binding Nick}" VerticalOptions="FillAndExpand"
+                                       FontSize="Medium" HorizontalOptions="FillAndExpand"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Header>
+                    <StackLayout>
+                        <StackLayout Spacing="10">
+                            <Entry x:Name="entToplulukAdi"
+                               Placeholder="Yeni topluluk adı girin.." PlaceholderColor="Gray"
+                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
+                               /> 
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Spacing="5">
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="StartAndExpand"
+                                             Padding="0,10,0,0">
+                                    <Label Text="Eklemek istediğiniz kişileri bulun."
+                                   HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                   TextColor="PaleVioletRed" Margin="10"> 
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="End">
+                                    <Button Text="Tümü" FontSize="Micro" Clicked="onGetAllUsers"
+                                            Margin="5"></Button>
+                                </StackLayout>
+                            </StackLayout>
+                            <SearchBar Placeholder="Kullanıcı ara .." PlaceholderColor="Gray"
+                                   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"
+                                   SearchButtonPressed="SearchButtonPressed"></SearchBar>
+                        </StackLayout>
+                    </StackLayout>
+
+                </ListView.Header>
+                <ListView.Footer>
+                    <StackLayout VerticalOptions="End" HorizontalOptions="Center">
+                        <Button x:Name="btnOlustur" Text="Topluluğu Oluştur" TextColor="Black"
+                                Margin="5" Clicked="onNewGroupButtonClick"></Button>
+                        <StackLayout Padding="0,10,0,0">
+                        <ActivityIndicator IsRunning="True" IsVisible="False" x:Name="actIndicator"
+                                           Color="YellowGreen"></ActivityIndicator>
+                        </StackLayout>
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

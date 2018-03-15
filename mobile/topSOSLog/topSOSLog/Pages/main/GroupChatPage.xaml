@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="topSOSLog.Pages.main.GroupChatPage"
+             Title="GroupChatPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand">
+            <ScrollView x:Name="Sayfa" VerticalOptions="FillAndExpand">
+                <StackLayout x:Name="SayfaStack" Margin="15"> 
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <Entry x:Name="txtMessage" Placeholder="Mesajınızı yazın" HorizontalOptions="FillAndExpand" VerticalOptions="End"></Entry>
+                <Button Clicked="Button_Clicked" Text="Gönder" HorizontalOptions="End" VerticalOptions="End"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
